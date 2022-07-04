@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>TokenCs</AssemblyName>
+        <RootNamespace>TokenCs</RootNamespace>
     </PropertyGroup>
 
 </Project>
