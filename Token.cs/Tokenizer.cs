@@ -25,4 +25,32 @@ public class Tokenizer : IEnumerable<Token>
     {
         return GetEnumerator();
     }
+    
+    public static TokenType DetermineType(char c)
+    {
+        if (char.IsLetter(c))
+        {
+            return TokenType.Alphabetic;
+        }
+        else if (char.IsNumber(c))
+        {
+            return TokenType.Numeric;
+        }
+        else if (char.IsSymbol(c) || char.IsPunctuation(c))
+        {
+            return TokenType.Symbol;
+        }
+        else if (c is '\r' or '\n')
+        {
+            return TokenType.NewLine;
+        }
+        else if (char.IsWhiteSpace(c))
+        {
+            return TokenType.Whitespace;
+        }
+        else
+        {
+            return TokenType.Unknown;
+        }
+    }
 }
