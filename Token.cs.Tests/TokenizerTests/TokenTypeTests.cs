@@ -1,23 +1,23 @@
-﻿namespace TokenCs.Tests;
+﻿namespace TokenCs.Tests.TokenizerTests;
 
 public class TokenTypeTests
 {
     [Test]
     public void TestAlphabetical()
     {
-        Assert.True(Tokenizer.DetermineType('a') == TokenType.Alphabetic);
+        Assert.That(Tokenizer.DetermineType('a'), Is.EqualTo(TokenType.Alphabetic));
     }
 
     [Test]
     public void TestNumeric()
     {
-        Assert.True(Tokenizer.DetermineType('0') == TokenType.Numeric);
+        Assert.That(Tokenizer.DetermineType('0'), Is.EqualTo(TokenType.Numeric));
     }
 
     [Test]
     public void TestSymbolic()
     {
-        Assert.True(Tokenizer.DetermineType('~') == TokenType.Symbol);
+        Assert.That(Tokenizer.DetermineType('~'), Is.EqualTo(TokenType.Symbol));
     }
 
     [Test]

@@ -1,0 +1,48 @@
+﻿namespace TokenCs;
+
+public enum LexerTokenType
+{
+    Unknown,
+    
+    Alphabetic,
+    Numeric,
+    
+    Backtick,
+    Tilde,
+    ExclamationMark,
+    At,
+    Hashtag,
+    Dollar,
+    Percent,
+    Caret,
+    Ampersand,
+    Star,
+    LeftParenthesis,
+    RightParenthesis,
+    Dash,
+    Underscore,
+    Equals,
+    Plus,
+    LeftBracket,
+    LeftCurlyBracket,
+    RightBracket,
+    RightCurlyBracket,
+    Backslash,
+    VerticalLine,
+    Semicolon,
+    Colon,
+    SingleQuotation,
+    DoubleQuotation,
+    Comma,
+    LessThan,
+    Period,
+    GreaterThan,
+    Slash,
+    QuestionMark,
+
+    Tab,
+    Space,
+    LineFeed,
+    CarriageReturn,
+    CarriageReturnLineFeed,
+}
