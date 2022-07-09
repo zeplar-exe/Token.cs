@@ -21,6 +21,13 @@ internal class LexInstance : IDisposable
         
         var canIterate = CurrentReserved || Enumerator.MoveNext();
         CurrentReserved = false;
+
+        if (!canIterate)
+        {
+            EnumerationCompleted = true;
+
+            return null;
+        }
         
         while (canIterate)
         {
@@ -32,8 +39,8 @@ internal class LexInstance : IDisposable
                 if (Tokens.Count > 0)
                 {
                     CurrentReserved = true;
-                    
-                    return CreateToken(LexerTokenType);
+
+                    return ClearAndReturn();
                 }
             }
 
@@ -51,11 +58,50 @@ internal class LexInstance : IDisposable
                 {
                     Tokens.Add(current);
                     
-                    break;
+                    var isDecimal = false;
+
+                    while (Enumerator.MoveNext())
+                    {
+                        var numCurrent = Enumerator.Current;
+                        var numType = Lexer.DetermineType(numCurrent);
+
+                        switch (numType)
+                        {
+                            case LexerTokenType.Numeric:
+                            {
+                                Tokens.Add(numCurrent);
+                                
+                                break;
+                            }
+                            case LexerTokenType.Period:
+                            {
+                                if (isDecimal)
+                                {
+                                    CurrentReserved = true;
+                                    
+                                    goto Complete;
+                                }
+                                
+                                Tokens.Add(numCurrent);
+                                isDecimal = true;
+                                break;
+                            }
+                            default:
+                            {
+                                CurrentReserved = true;
+                                
+                                goto Complete;
+                            }
+                        }
+                    }
+                    
+                    Complete:
+
+                    return ClearAndReturn();
                 }
                 default:
                 {
-                    return CreateToken(type);
+                    return ClearAndReturn();
                 }
             }
 
@@ -73,16 +119,6 @@ internal class LexInstance : IDisposable
         return token;
     }
     
-    private LexerToken CreateUnknown()
-    {
-        return CreateToken(LexerTokenType.Unknown);
-    }
-
-    private LexerToken CreateToken(LexerTokenType type)
-    {
-        return new LexerToken(new[] { Enumerator.Current }, type);
-    }
-
     public void Dispose()
     {
         Enumerator.Dispose();

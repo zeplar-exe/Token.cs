@@ -6,9 +6,9 @@ public class Lexer : IEnumerable<LexerToken>
 {
     private IEnumerable<Token> Enumerable { get; }
 
-    public Lexer(IEnumerable<char> characters)
+    public Lexer(IEnumerable<char> characters) : this(new Tokenizer(characters))
     {
-        Enumerable = new Tokenizer(characters);
+        
     }
     
     public Lexer(IEnumerable<Token> enumerable)
@@ -43,7 +43,7 @@ public class Lexer : IEnumerable<LexerToken>
             {
                 return LexerTokenType.Numeric;
             }
-            case TokenType.Symbol:
+            case TokenType.NewLine:
             {
                 return token.Text switch
                 {
@@ -62,7 +62,7 @@ public class Lexer : IEnumerable<LexerToken>
                     _ => LexerTokenType.Unknown
                 };
             }
-            case TokenType.NewLine:
+            case TokenType.Symbol:
             {
                 return token.Text switch
                 {

@@ -24,8 +24,4 @@
       <ProjectReference Include="..\Token.cs\Token.cs.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="LexerTests" />
-    </ItemGroup>
-
 </Project>
