@@ -61,8 +61,14 @@ internal class TokenizeInstance : IDisposable
                 
                 // I swear, if another newline character appears in the future, I'll do something
             }
-            
+
             StringBuilder.Append(current);
+            
+            switch (TokenType)
+            {
+                case TokenType.Symbol:
+                    return CreateToken();
+            }
 
             canIterate = Enumerator.MoveNext();
         }

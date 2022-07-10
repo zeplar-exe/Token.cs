@@ -101,12 +101,10 @@ public class Lexer : IEnumerable<LexerToken>
                     _ => LexerTokenType.Unknown
                 };
             }
-            case TokenType.Unknown:
+            default:
             {
                 return LexerTokenType.Unknown;
             }
         }
-
-        return LexerTokenType.Unknown;
     }
 }

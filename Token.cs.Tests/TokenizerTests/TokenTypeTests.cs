@@ -5,40 +5,42 @@ public class TokenTypeTests
     [Test]
     public void TestAlphabetical()
     {
-        Assert.That(Tokenizer.DetermineType('a'), Is.EqualTo(TokenType.Alphabetic));
+        Assert.That(TokenIs('a', TokenType.Alphabetic));
     }
 
     [Test]
     public void TestNumeric()
     {
-        Assert.That(Tokenizer.DetermineType('0'), Is.EqualTo(TokenType.Numeric));
+        Assert.That(TokenIs('0', TokenType.Numeric));
     }
 
     [Test]
     public void TestSymbolic()
     {
-        Assert.That(Tokenizer.DetermineType('~'), Is.EqualTo(TokenType.Symbol));
+        Assert.That(TokenIs('~', TokenType.Symbol));
     }
 
     [Test]
     public void TestWhitespace()
     {
         AssertEx.All(
-            Tokenizer.DetermineType(' ') == TokenType.Whitespace,
-            Tokenizer.DetermineType('\t') == TokenType.Whitespace);
+            TokenIs(' ', TokenType.Whitespace),
+            TokenIs('\t', TokenType.Whitespace));
     }
 
     [Test]
     public void TestNewline()
     {
         AssertEx.All(
-            Tokenizer.DetermineType('\n') == TokenType.NewLine,
-            Tokenizer.DetermineType('\r') == TokenType.NewLine);
+            TokenIs('\n', TokenType.NewLine),
+            TokenIs('\r', TokenType.NewLine));
     }
     
     [Test]
     public void TestUnknownCharacter()
     {
-        Assert.True(Tokenizer.DetermineType('⑕') == TokenType.Unknown);
+        Assert.That(TokenIs('⑕', TokenType.Unknown));
     }
+
+    private static bool TokenIs(char c, TokenType type) => Tokenizer.DetermineType(c) == type;
 }

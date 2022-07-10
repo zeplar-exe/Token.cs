@@ -27,7 +27,7 @@ public class WhitespaceTests
         var results = TokenizeHelper.GetTokens("([{\n}])");
 
         AssertEx.All(
-            results[1] is { Text: "\n", Type: TokenType.NewLine });
+            results[3] is { Text: "\n", Type: TokenType.NewLine });
     }
 
     [Test]
