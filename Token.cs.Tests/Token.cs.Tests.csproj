@@ -1,15 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>10.0</LangVersion>
         <Nullable>enable</Nullable>
 
-        <IsPackable>false</IsPackable>
-
         <AssemblyName>TokenCs.Tests</AssemblyName>
-
         <RootNamespace>TokenCs.Tests</RootNamespace>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
