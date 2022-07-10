@@ -52,7 +52,7 @@ internal class TokenizeInstance : IDisposable
                     return CreateToken();
                 }
                 
-                if (current == '\r' && StringBuilder.Equals("\r")) // If double carriage return, reserve and return
+                if (current == '\r' && StringBuilder.ToString() == "\r") // If double carriage return, reserve and return
                 {
                     CurrentReserved = true;
                     

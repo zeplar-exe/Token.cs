@@ -2,15 +2,23 @@
 
 namespace TokenCs;
 
+/// <summary>
+/// Underlying text-to-token parser.
+/// </summary>
 public class Tokenizer : IEnumerable<Token>
 {
     private IEnumerable<char> Enumerable { get; }
 
+    /// <summary>
+    /// Create a tokenizer with an enumerable of characters..
+    /// </summary>
+    /// <param name="enumerable"></param>
     public Tokenizer(IEnumerable<char> enumerable)
     {
         Enumerable = enumerable;
     }
 
+    /// <inheritdoc />
     public IEnumerator<Token> GetEnumerator()
     {
         using var instance = new TokenizeInstance(Enumerable.GetEnumerator());
@@ -26,6 +34,10 @@ public class Tokenizer : IEnumerable<Token>
         return GetEnumerator();
     }
     
+    /// <summary>
+    /// Determine the <see cref="TokenType"/> of a given <see cref="Char"/>.
+    /// </summary>
+    /// <param name="c">Character to check.</param>
     public static TokenType DetermineType(char c)
     {
         if (char.IsLetter(c))

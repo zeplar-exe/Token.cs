@@ -2,20 +2,34 @@
 
 namespace TokenCs;
 
+/// <summary>
+/// Wrapper around <see cref="Tokenizer"/> which subdivides tokens into more concrete types.
+/// </summary>
 public class Lexer : IEnumerable<LexerToken>
 {
     private IEnumerable<Token> Enumerable { get; }
 
+    /// <summary>
+    /// Create a <see cref="Lexer"/> with an enumerable of characters.
+    /// </summary>
+    /// <param name="characters">Characters to parse.</param>
     public Lexer(IEnumerable<char> characters) : this(new Tokenizer(characters))
     {
         
     }
     
+    /// <summary>
+    /// Create a <see cref="Lexer"/> with an enumerable of <see cref="Token">Tokens</see>
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <remarks>A <see cref="Tokenizer"/> instance is valid in this constructor due to it inheriting from
+    /// <see cref="IEnumerable{Token}"/>.</remarks>
     public Lexer(IEnumerable<Token> enumerable)
     {
         Enumerable = enumerable;
     }
 
+    /// <inheritdoc />
     public IEnumerator<LexerToken> GetEnumerator()
     {
         using var instance = new LexInstance(Enumerable.GetEnumerator());
@@ -31,6 +45,10 @@ public class Lexer : IEnumerable<LexerToken>
         return GetEnumerator();
     }
 
+    /// <summary>
+    /// Determine the <see cref="LexerTokenType"/> of a given <see cref="Token"/>.
+    /// </summary>
+    /// <param name="token">The token to check.</param>
     public static LexerTokenType DetermineType(Token token)
     {
         switch (token.Type)
