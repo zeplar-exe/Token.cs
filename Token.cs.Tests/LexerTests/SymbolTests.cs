@@ -240,4 +240,14 @@ public class SymbolTests
             results[0].Type == LexerTokenType.LeftCurlyBracket,
             results[1].Type == LexerTokenType.RightCurlyBracket);
     }
+
+    [Test]
+    public void TestDoublePeriod()
+    {
+        var results = LexHelper.GetTokens("..").ToArray();
+        
+        AssertEx.All(
+            results.Length == 2,
+            results.All(t => t.Type == LexerTokenType.Period));
+    }
 }
