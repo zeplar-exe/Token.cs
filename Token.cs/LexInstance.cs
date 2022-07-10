@@ -129,8 +129,6 @@ internal class LexInstance : IDisposable
                     return ClearAndReturn();
                 }
             }
-
-            canIterate = Enumerator.MoveNext();
         }
 
         return null;
