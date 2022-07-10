@@ -37,7 +37,7 @@ public class Lexer : IEnumerable<LexerToken>
         {
             case TokenType.Alphabetic:
             {
-                return LexerTokenType.Alphabetic;
+                return LexerTokenType.AlphaNumeric;
             }
             case TokenType.Numeric:
             {

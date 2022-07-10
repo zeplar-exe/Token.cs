@@ -4,7 +4,7 @@ public enum LexerTokenType
 {
     Unknown,
     
-    Alphabetic,
+    AlphaNumeric,
     Numeric,
     
     Backtick,

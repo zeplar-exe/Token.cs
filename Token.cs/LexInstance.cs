@@ -48,11 +48,36 @@ internal class LexInstance : IDisposable
 
             switch (LexerTokenType)
             {
-                case LexerTokenType.Alphabetic:
+                case LexerTokenType.AlphaNumeric:
                 {
                     Tokens.Add(current);
+
+                    while (Enumerator.MoveNext())
+                    {
+                        var alphaCurrent = Enumerator.Current;
+                        var alphaType = Lexer.DetermineType(alphaCurrent);
+
+                        switch (alphaType)
+                        {
+                            case LexerTokenType.AlphaNumeric:
+                            case LexerTokenType.Numeric:
+                            {
+                                Tokens.Add(alphaCurrent);
+
+                                break;
+                            }
+                            default:
+                            {
+                                CurrentReserved = true;
+
+                                goto Complete;
+                            }
+                        }
+                    }
                     
-                    break;
+                    Complete:
+                    
+                    return ClearAndReturn();
                 }
                 case LexerTokenType.Numeric:
                 {
