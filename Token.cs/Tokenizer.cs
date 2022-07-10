@@ -15,6 +15,8 @@ public class Tokenizer : IEnumerable<Token>
     /// <param name="enumerable"></param>
     public Tokenizer(IEnumerable<char> enumerable)
     {
+        ExceptionHelper.ArgumentNull(enumerable);
+        
         Enumerable = enumerable;
     }
 
@@ -40,6 +42,8 @@ public class Tokenizer : IEnumerable<Token>
     /// <param name="c">Character to check.</param>
     public static TokenType DetermineType(char c)
     {
+        ExceptionHelper.ArgumentNull(c);
+        
         if (char.IsLetter(c))
         {
             return TokenType.Alphabetic;

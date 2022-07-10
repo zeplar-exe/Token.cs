@@ -26,6 +26,8 @@ public class Lexer : IEnumerable<LexerToken>
     /// <see cref="IEnumerable{Token}"/>.</remarks>
     public Lexer(IEnumerable<Token> enumerable)
     {
+        ExceptionHelper.ArgumentNull(enumerable);
+    
         Enumerable = enumerable;
     }
 
@@ -51,6 +53,8 @@ public class Lexer : IEnumerable<LexerToken>
     /// <param name="token">The token to check.</param>
     public static LexerTokenType DetermineType(Token token)
     {
+        ExceptionHelper.ArgumentNull(token);
+        
         switch (token.Type)
         {
             case TokenType.Alphabetic:
