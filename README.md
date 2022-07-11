@@ -11,7 +11,7 @@ A simple library to abstract the gritty process of lexical parsing.
 
 ## Installation
 
-This package is available on [nuget](https://www.nuget.org/profiles/zeplar_exe).
+This package is available on [nuget](https://www.nuget.org/packages/TokenCs).
 
 ## Samples
 
