@@ -45,13 +45,12 @@ internal class LexInstance : IDisposable
             }
 
             LexerTokenType = type;
+            Tokens.Add(current);
 
             switch (LexerTokenType)
             {
                 case LexerTokenType.AlphaNumeric:
                 {
-                    Tokens.Add(current);
-
                     while (Enumerator.MoveNext())
                     {
                         var alphaCurrent = Enumerator.Current;
@@ -81,8 +80,6 @@ internal class LexInstance : IDisposable
                 }
                 case LexerTokenType.Numeric:
                 {
-                    Tokens.Add(current);
-                    
                     var isDecimal = false;
 
                     while (Enumerator.MoveNext())
