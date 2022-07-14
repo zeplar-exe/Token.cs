@@ -8,6 +8,9 @@
 /// <param name="Type">Type of this token.</param>
 public record Token(int Index, string Text, TokenType Type)
 {
+    public int Length => Text.Length;
+    public int EndIndex => Index + Length;
+
     /// <inheritdoc />
     public override string ToString()
     {
