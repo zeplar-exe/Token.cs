@@ -78,49 +78,6 @@ internal class LexInstance : IDisposable
                     
                     return ClearAndReturn();
                 }
-                case LexerTokenType.Numeric:
-                {
-                    var isDecimal = false;
-
-                    while (Enumerator.MoveNext())
-                    {
-                        var numCurrent = Enumerator.Current;
-                        var numType = Lexer.DetermineType(numCurrent);
-
-                        switch (numType)
-                        {
-                            case LexerTokenType.Numeric:
-                            {
-                                Tokens.Add(numCurrent);
-                                
-                                break;
-                            }
-                            case LexerTokenType.Period:
-                            {
-                                if (isDecimal)
-                                {
-                                    CurrentReserved = true;
-                                    
-                                    goto Complete;
-                                }
-                                
-                                Tokens.Add(numCurrent);
-                                isDecimal = true;
-                                break;
-                            }
-                            default:
-                            {
-                                CurrentReserved = true;
-                                
-                                goto Complete;
-                            }
-                        }
-                    }
-                    
-                    Complete:
-
-                    return ClearAndReturn();
-                }
                 default:
                 {
                     return ClearAndReturn();

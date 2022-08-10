@@ -20,20 +20,9 @@ public class NumericTests
         var result = LexHelper.GetTokens("3.14");
         
         AssertEx.All(
-            result.Length == 1,
-            result[0] is { Type: LexerTokenType.Numeric },
-            result[0].ToString() == "3.14");
-    }
-    
-    [Test]
-    public void TestPeriodAfterDecimal()
-    {
-        var result = LexHelper.GetTokens("3.14.15");
-        
-        AssertEx.All(
             result.Length == 3,
             result[0] is { Type: LexerTokenType.Numeric },
-            result[0].ToString() == "3.14");
+            result[0].ToString() == "3");
     }
     
     [Test]
@@ -42,8 +31,8 @@ public class NumericTests
         var result = LexHelper.GetTokens("(3.14)");
         
         AssertEx.All(
-            result.Length == 3,
+            result.Length == 5,
             result[1] is { Type: LexerTokenType.Numeric },
-            result[1].ToString() == "3.14");
+            result[1].ToString() == "3");
     }
 }

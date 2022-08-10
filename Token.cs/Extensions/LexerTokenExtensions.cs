@@ -26,25 +26,6 @@ public static class LexerTokenExtensions
     }
 
     /// <summary>
-    /// Determine whether a token is an integer.
-    /// </summary>
-    /// <param name="token">The token to check.</param>
-    public static bool IsNumeric(this LexerToken token)
-    {
-        return token.Tokens.All(t => t.Type == TokenType.Numeric);
-    }
-
-    /// <summary>
-    /// Determine whether a token is an decimal (has a mantissa).
-    /// </summary>
-    /// <param name="token">The token to check.</param>
-    public static bool IsDecimal(this LexerToken token)
-    {
-        return token.Type == LexerTokenType.Numeric &&
-               token.Tokens.Any(t => t.Type == TokenType.Symbol && t.Text == ".");
-    }
-
-    /// <summary>
     /// Determine whether a token is any type of newline.
     /// </summary>
     /// <param name="token">The token to check.</param>

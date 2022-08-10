@@ -38,38 +38,6 @@ public class ExtensionTests
     }
 
     [Test]
-    public void TestNumeric()
-    {
-        var token = LexHelper.GetTokens("123")[0];
-        
-        Assert.That(token.IsNumeric);
-    }
-
-    [Test]
-    public void TestNotNumeric()
-    {
-        var token = LexHelper.GetTokens("abc")[0];
-        
-        Assert.That(!token.IsNumeric());
-    }
-
-    [Test]
-    public void TestDecimal()
-    {
-        var token = LexHelper.GetTokens("3.14")[0];
-        
-        Assert.That(token.IsDecimal);
-    }
-
-    [Test]
-    public void TestNotDecimal()
-    {
-        var token = LexHelper.GetTokens("123")[0];
-        
-        Assert.That(!token.IsDecimal());
-    }
-
-    [Test]
     public void TestNewLineCr()
     {
         var token = LexHelper.GetTokens("\r")[0];
