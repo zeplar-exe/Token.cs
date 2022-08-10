@@ -7,6 +7,10 @@
 /// <param name="Type">Type of this token.</param>
 public record LexerToken(Token[] Tokens, LexerTokenType Type)
 {
+    public int StartIndex => Tokens.First().Index;
+    public int Length => Tokens.Sum(t => t.Length);
+    public int EndIndex => StartIndex + Length;
+
     /// <inheritdoc />
     public override string ToString()
     {
