@@ -18,5 +18,3 @@ For extended samples, see [/samples/](https://github.com/zeplar-exe/Token.cs/tre
   the tokenizer or lexer. The same goes for whitespace (CRLF is an exception).
 - [LexerTokenType.AlphaNumeric](https://github.com/zeplar-exe/Token.cs/tree/master/Token.cs/LexerTokenType.cs#L16) will always contain alphabetical characters.
   It may or may not contain numeric characters, and will never be purely numeric.
-- [LexerTokenType.Numeric](https://github.com/zeplar-exe/Token.cs/tree/master/Token.cs/LexerTokenType.cs#L20) can be any real number.
-- For sanity checking, import `TokenCs.Extensions` for some useful extension methods regarding quirky token types.

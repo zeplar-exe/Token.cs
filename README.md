@@ -23,5 +23,3 @@ For extended samples, see [/samples/](./samples).
 the tokenizer or lexer. The same goes for whitespace (CRLF is an exception).
 - [LexerTokenType.AlphaNumeric](./Token.cs/LexerTokenType.cs#L16) will always contain alphabetical characters.
 It may or may not contain numeric characters, and will never be purely numeric.
-- [LexerTokenType.Numeric](./Token.cs/LexerTokenType.cs#L20) can be any real number.
-- For sanity checking, import `TokenCs.Extensions` for some useful extension methods regarding quirky token types.
