@@ -1,3 +1,4 @@
+## This project is discontinued
 # Token.cs (TokenCs)
 
 ![build](https://github.com/zeplar-exe/Token.cs/actions/workflows/dotnet.yml/badge.svg)
